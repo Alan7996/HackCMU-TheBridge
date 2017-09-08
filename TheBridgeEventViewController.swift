@@ -14,7 +14,7 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var webView: UIWebView!
     @IBOutlet weak var eventTableView: UITableView!
     
-    var eventsArray = [[], [], [], []]
+    var eventsArray:[[String]] = [[], [], [], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,11 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = eventTableView.dequeueReusableCell(withIdentifier: "theBridgeEventTableViewCell", for: indexPath as IndexPath) as! TheBridgeEventTableViewCell
+        
+        cell.eventNameLabel.text = eventsArray[0][indexPath.row]
+        cell.eventDateLabel.text = eventsArray[1][indexPath.row]
+        cell.eventPlaceLabel.text = eventsArray[2][indexPath.row]
+        cell.eventTypeLabel.text = eventsArray[3][indexPath.row]
         
         return cell
     }
@@ -91,9 +96,12 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
             
             for event in doc.css("div[style^='font-style: italic; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;']") {
                 // Strip the string of surrounding whitespace
-                let eventPlaceString = event.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                var eventPlaceString = event.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                 
                 if eventPlaceString != "" {
+                    if eventPlaceString == "Email will be sent to those that sign up for further details on where to meet on campus before leaving" {
+                        eventPlaceString = "TBA"
+                    }
                     eventsArray[2].append(eventPlaceString)
 //                    print(eventPlaceString)
                     

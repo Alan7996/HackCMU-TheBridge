@@ -9,5 +9,8 @@
 import UIKit
 
 class TheBridgeEventTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventPlaceLabel: UILabel!
+    @IBOutlet weak var eventTypeLabel: UILabel!
 }

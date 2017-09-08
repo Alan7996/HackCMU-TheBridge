@@ -57,17 +57,68 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yc9-JL-usb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yc9-JL-usb">
                                 <rect key="frame" x="16" y="72" width="343" height="595"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="theBridgeEventTableViewCell" id="vqh-MJ-AL8" customClass="TheBridgeEventTableViewCell" customModule="HackCMU_TheBridge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="theBridgeEventTableViewCell" rowHeight="150" id="vqh-MJ-AL8" customClass="TheBridgeEventTableViewCell" customModule="HackCMU_TheBridge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vqh-MJ-AL8" id="iti-LY-wOU">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="nOX-Tv-X3I">
+                                                    <rect key="frame" x="8" y="8" width="335" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="xLe-dV-VDX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="r6z-i8-QxM">
+                                                    <rect key="frame" x="8" y="99" width="335" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Sib-dm-ftT">
+                                                    <rect key="frame" x="8" y="120" width="335" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7iQ-wt-L0s">
+                                                    <rect key="frame" x="8" y="78" width="335" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="topMargin" secondItem="nOX-Tv-X3I" secondAttribute="top" id="6MU-W8-08d"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7iQ-wt-L0s" secondAttribute="trailing" constant="-8" id="M9C-Hj-asN"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="r6z-i8-QxM" secondAttribute="leading" id="PrU-Jy-Rr7"/>
+                                                <constraint firstItem="r6z-i8-QxM" firstAttribute="top" secondItem="7iQ-wt-L0s" secondAttribute="bottom" id="Sr3-nC-pkT"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="nOX-Tv-X3I" secondAttribute="leading" id="XVs-mw-KYz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Sib-dm-ftT" secondAttribute="bottom" id="XX3-vz-rVQ"/>
+                                                <constraint firstItem="Sib-dm-ftT" firstAttribute="top" secondItem="r6z-i8-QxM" secondAttribute="bottom" id="b4f-yW-7sE"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Sib-dm-ftT" secondAttribute="leading" id="jGy-XG-lFo"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="7iQ-wt-L0s" secondAttribute="leading" id="lgT-Jm-cwx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Sib-dm-ftT" secondAttribute="trailing" constant="-8" id="uX7-st-NJQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nOX-Tv-X3I" secondAttribute="trailing" constant="-8" id="vwY-df-ntF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="r6z-i8-QxM" secondAttribute="trailing" id="cDA-nh-PCY"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="eventDateLabel" destination="7iQ-wt-L0s" id="kFq-IJ-cz2"/>
+                                            <outlet property="eventNameLabel" destination="nOX-Tv-X3I" id="Cbi-2a-dOf"/>
+                                            <outlet property="eventPlaceLabel" destination="r6z-i8-QxM" id="9U7-tb-cOJ"/>
+                                            <outlet property="eventTypeLabel" destination="Sib-dm-ftT" id="pPd-yh-yfe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
