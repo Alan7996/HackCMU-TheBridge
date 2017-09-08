@@ -18,7 +18,6 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "TheBridge Event List"
         
         self.eventTableView.delegate = self
         self.eventTableView.dataSource = self
@@ -128,6 +127,10 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
         }
         
         self.eventTableView.reloadData()
+    }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        _ = dismiss(animated: true, completion: nil) //navigationController?.popToRootViewController(animated: true)
     }
 }
 
