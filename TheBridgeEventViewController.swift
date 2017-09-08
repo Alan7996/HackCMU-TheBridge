@@ -8,12 +8,13 @@
 
 import UIKit
 import Kanna
-import Alamofire
 import WebKit
 
 class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
     @IBOutlet var webView: UIWebView!
     @IBOutlet weak var eventTableView: UITableView!
+    
+    var eventsArray = [[], [], [], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return eventsArray[0].count
     }
     
     // create a cell for each table view row
@@ -57,13 +58,68 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
         if let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) {
             // Search for nodes by CSS selector
             print(html)
-            for event in doc.css("span[style^='color: rgb(73, 73, 73)']") {
+            var n = 0
+            for event in doc.css("span[style^='color: rgb(73, 73, 73); display: block; font-size: 18px; font-weight: 600; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 90%; position: absolute;']") {
                 // Strip the string of surrounding whitespace
-                let eventString = event.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                let eventNameString = event.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                 
-                print(eventString)
+                if eventNameString != "" {
+                    eventsArray[0].append(eventNameString)
+//                    print(eventNameString)
+                    
+                    n += 1
+                }
             }
+            
+            // Reset counter
+            n = 0
+            
+            for event in doc.css("div[style^='white-space: nowrap; text-overflow: ellipsis; overflow: hidden;']") {
+                // Strip the string of surrounding whitespace
+                let eventDateString = event.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                
+                if eventDateString != "" {
+                    eventsArray[1].append(eventDateString)
+//                    print(eventDateString)
+                    
+                    n += 1
+                }
+            }
+            
+            // Reset counter
+            n = 0
+            
+            for event in doc.css("div[style^='font-style: italic; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;']") {
+                // Strip the string of surrounding whitespace
+                let eventPlaceString = event.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                
+                if eventPlaceString != "" {
+                    eventsArray[2].append(eventPlaceString)
+//                    print(eventPlaceString)
+                    
+                    n += 1
+                }
+            }
+            
+            // Reset counter
+            n = 0
+            
+            for event in doc.css("span[style^='position: relative; top: -8px;']") {
+                // Strip the string of surrounding whitespace
+                let eventTypeString = event.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                
+                if eventTypeString != "" {
+                    eventsArray[3].append(eventTypeString)
+//                    print(eventTypeString)
+                    
+                    n += 1
+                }
+            }
+            
+            print(eventsArray)
         }
+        
+        self.eventTableView.reloadData()
     }
 }
 
