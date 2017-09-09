@@ -14,19 +14,18 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var webView: UIWebView!
     @IBOutlet weak var eventTableView: UITableView!
     
-    var eventsArray:[[String]] = [[], [], [], []]
+    var row = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.eventTableView.delegate = self
         self.eventTableView.dataSource = self
+        self.eventTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         self.webView.delegate = self
         let urlString = "https://thebridge.cmu.edu/events"
         self.webView.loadRequest(NSURLRequest(url: NSURL(string: urlString)! as URL) as URLRequest!)
-        
-        //self.scrapeTheBridge()
     }
     
     // number of rows in table view
@@ -43,13 +42,18 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
         cell.eventPlaceLabel.text = eventsArray[2][indexPath.row]
         cell.eventTypeLabel.text = eventsArray[3][indexPath.row]
         
+        cell.layer.borderWidth = 2.0
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.separatorInset = UIEdgeInsets.zero
+        
         return cell
     }
 
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+        row = indexPath.row
+        performSegue(withIdentifier: "eventWebSegue", sender: nil)
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
@@ -61,7 +65,7 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
     func parseHTML(html: String) -> Void {
         if let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) {
             // Search for nodes by CSS selector
-            print(html)
+//            print(html)
             var n = 0
             for event in doc.css("span[style^='color: rgb(73, 73, 73); display: block; font-size: 18px; font-weight: 600; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 90%; position: absolute;']") {
                 // Strip the string of surrounding whitespace
@@ -123,14 +127,42 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
                 }
             }
             
+            // Reset counter
+            n = 0
+            
+            if let docu = Kanna.HTML(html: doc.innerHTML!, encoding: String.Encoding.utf8) {
+                var bodyNode = docu.body
+                
+                if let inputNodes = bodyNode?.xpath("//a[contains(@href,'/event/1')]/@href") {
+                    for node in inputNodes {
+                        eventsArray[4].append(node.content!)
+                    }
+                }
+            }
             print(eventsArray)
         }
-        
         self.eventTableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "eventWebSegue" {
+                let webViewViewController = segue.destination as! WebViewViewController
+                
+                webViewViewController.urlString = "https://thebridge.cmu.edu" + eventsArray[4][row]
+            }
+        }
+    }
+    
     @IBAction func backBtnPressed(_ sender: Any) {
-        _ = dismiss(animated: true, completion: nil) //navigationController?.popToRootViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
-
+extension String {
+    public func index(of char: Character) -> Int? {
+        if let idx = characters.index(of: char) {
+            return characters.distance(from: startIndex, to: idx)
+        }
+        return nil
+    }
+}

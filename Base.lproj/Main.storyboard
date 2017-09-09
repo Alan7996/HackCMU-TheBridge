@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HackCMU_TheBridge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="HackCMU_TheBridge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,8 +23,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xk-K0-LJX">
-                                <rect key="frame" x="164" y="155" width="46" height="30"/>
-                                <state key="normal" title="Events"/>
+                                <rect key="frame" x="138" y="155" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="aYN-Mc-Saa"/>
+                                    <constraint firstAttribute="height" constant="50" id="ifs-cf-4DR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="EVENTS">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="SSc-Y2-Z1h" kind="show" id="tSD-GF-eff"/>
                                 </connections>
@@ -36,16 +44,183 @@
                                     <navigationItem title="Main Menu" id="9LG-Fx-PBV"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZb-hM-a29">
+                                <rect key="frame" x="103" y="246" width="169" height="50"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6gj-SZ-xgh"/>
+                                    <constraint firstAttribute="width" constant="169" id="rPm-mg-JZl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="ORGANIZATIONS">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6dX-Sr-g0E" kind="show" id="DZK-1F-cgp"/>
+                                </connections>
+                            </button>
+                            <webView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TuB-Q8-4oW">
+                                <rect key="frame" x="68" y="312" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="KZb-hM-a29" firstAttribute="top" secondItem="9Xk-K0-LJX" secondAttribute="bottom" constant="41" id="GAK-I3-DV2"/>
+                            <constraint firstItem="KZb-hM-a29" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HBb-N4-0dl"/>
                             <constraint firstItem="9Xk-K0-LJX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pbi-wj-XXc"/>
                             <constraint firstItem="9Xk-K0-LJX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="135" id="nl3-iY-qwP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="eventsBtn" destination="9Xk-K0-LJX" id="yEU-TQ-HT7"/>
+                        <outlet property="orgBtn" destination="KZb-hM-a29" id="66S-gk-d4c"/>
+                        <outlet property="webView1" destination="TuB-Q8-4oW" id="slh-UD-tCN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="99.400299850074973"/>
+        </scene>
+        <!--The Bridge Org View Controller-->
+        <scene sceneID="Ndz-E3-tTg">
+            <objects>
+                <viewController id="6dX-Sr-g0E" customClass="TheBridgeOrgViewController" customModule="HackCMU_TheBridge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pb1-DB-2yH"/>
+                        <viewControllerLayoutGuide type="bottom" id="oAW-Ey-09U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GBt-Pl-prV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6D-xy-rVN">
+                                <rect key="frame" x="21" y="20" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQb-aH-wlD">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Organization List" id="YZY-k4-PFc">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="SVY-l0-Ma0">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DIF-nh-JLR">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backBtnPressed2:" destination="6dX-Sr-g0E" eventType="touchUpInside" id="V40-7V-X3F"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MJu-11-Isx">
+                                <rect key="frame" x="4" y="70" width="367" height="589"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="theBridgeOrgTableViewCell" rowHeight="60" id="aEx-aU-mlI" customClass="TheBridgeOrgTableViewCell" customModule="HackCMU_TheBridge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="367" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aEx-aU-mlI" id="3Or-FH-0Ux">
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OrgName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Aen-we-HS8">
+                                                    <rect key="frame" x="8" y="8" width="351" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="aGR-Qd-K0R"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="topMargin" secondItem="Aen-we-HS8" secondAttribute="top" id="3Ui-te-OJG"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Aen-we-HS8" secondAttribute="leading" id="g1Z-hD-Jsn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Aen-we-HS8" secondAttribute="trailing" id="wiV-13-reZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="orgNameLabel" destination="Aen-we-HS8" id="GXH-27-oRA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92148774862289429" green="0.92162030935287476" blue="0.92145884037017822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="MJu-11-Isx" secondAttribute="trailing" constant="-12" id="5Tz-cC-Icd"/>
+                            <constraint firstItem="MJu-11-Isx" firstAttribute="leading" secondItem="GBt-Pl-prV" secondAttribute="leadingMargin" constant="-12" id="K5V-d4-8sk"/>
+                            <constraint firstItem="oAW-Ey-09U" firstAttribute="top" secondItem="MJu-11-Isx" secondAttribute="bottom" constant="8" id="OEP-08-TVb"/>
+                            <constraint firstItem="MJu-11-Isx" firstAttribute="top" secondItem="Pb1-DB-2yH" secondAttribute="bottom" constant="50" id="uqf-nS-l6O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="orgTableView" destination="MJu-11-Isx" id="jBH-KC-8rM"/>
+                        <outlet property="webView" destination="d6D-xy-rVN" id="naQ-2n-635"/>
+                        <segue destination="eI9-h4-IZv" kind="show" identifier="orgWebSegue" id="WZP-sj-qAe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGS-st-yhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.79999999999995" y="285.60719640179911"/>
+        </scene>
+        <!--Web View View Controller-->
+        <scene sceneID="z3i-6w-ByH">
+            <objects>
+                <viewController id="eI9-h4-IZv" customClass="WebViewViewController" customModule="HackCMU_TheBridge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VwN-ES-CIQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="4JU-uY-kH8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oo1-bg-UwA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WR1-Qj-dpQ">
+                                <rect key="frame" x="16" y="66" width="343" height="581"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UG0-Jn-D4y">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Page Viewer" id="H9L-WC-XtD">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="ec2-fX-3Ab">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lkL-jt-NNk">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backBtnPressed2:" destination="6dX-Sr-g0E" eventType="touchUpInside" id="qWL-n4-pY3"/>
+                                                    <action selector="backBtnPressed3:" destination="eI9-h4-IZv" eventType="touchUpInside" id="Iy5-8p-DJM"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4JU-uY-kH8" firstAttribute="top" secondItem="WR1-Qj-dpQ" secondAttribute="bottom" constant="20" id="3UB-f2-7pR"/>
+                            <constraint firstItem="WR1-Qj-dpQ" firstAttribute="top" secondItem="VwN-ES-CIQ" secondAttribute="bottom" constant="46" id="C0o-td-1sE"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="WR1-Qj-dpQ" secondAttribute="leading" id="KZI-SF-J3B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WR1-Qj-dpQ" secondAttribute="trailing" id="oxx-fA-8v0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="WR1-Qj-dpQ" id="fag-6M-FjX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Obj-si-Szl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792.8" y="-54.422788605697157"/>
         </scene>
         <!--The Bridge Event View Controller-->
         <scene sceneID="bIC-gs-ZLR">
@@ -59,24 +234,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npp-En-y3D">
+                            <webView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npp-En-y3D">
                                 <rect key="frame" x="16" y="-22" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yc9-JL-usb">
-                                <rect key="frame" x="16" y="72" width="343" height="595"/>
+                                <rect key="frame" x="4" y="66" width="367" height="601"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="theBridgeEventTableViewCell" rowHeight="150" id="vqh-MJ-AL8" customClass="TheBridgeEventTableViewCell" customModule="HackCMU_TheBridge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="theBridgeEventTableViewCell" rowHeight="150" id="vqh-MJ-AL8" customClass="TheBridgeEventTableViewCell" customModule="HackCMU_TheBridge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="367" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vqh-MJ-AL8" id="iti-LY-wOU">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="nOX-Tv-X3I">
-                                                    <rect key="frame" x="8" y="8" width="335" height="70"/>
+                                                    <rect key="frame" x="8" y="8" width="351" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="xLe-dV-VDX"/>
                                                     </constraints>
@@ -85,19 +260,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="r6z-i8-QxM">
-                                                    <rect key="frame" x="8" y="99" width="335" height="21"/>
+                                                    <rect key="frame" x="8" y="99" width="359" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Sib-dm-ftT">
-                                                    <rect key="frame" x="8" y="120" width="335" height="21"/>
+                                                    <rect key="frame" x="8" y="120" width="351" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7iQ-wt-L0s">
-                                                    <rect key="frame" x="8" y="78" width="335" height="21"/>
+                                                    <rect key="frame" x="8" y="78" width="351" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -105,7 +280,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="topMargin" secondItem="nOX-Tv-X3I" secondAttribute="top" id="6MU-W8-08d"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7iQ-wt-L0s" secondAttribute="trailing" constant="-8" id="M9C-Hj-asN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7iQ-wt-L0s" secondAttribute="trailing" id="M9C-Hj-asN"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="r6z-i8-QxM" secondAttribute="leading" id="PrU-Jy-Rr7"/>
                                                 <constraint firstItem="r6z-i8-QxM" firstAttribute="top" secondItem="7iQ-wt-L0s" secondAttribute="bottom" id="Sr3-nC-pkT"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="nOX-Tv-X3I" secondAttribute="leading" id="XVs-mw-KYz"/>
@@ -113,8 +288,8 @@
                                                 <constraint firstItem="Sib-dm-ftT" firstAttribute="top" secondItem="r6z-i8-QxM" secondAttribute="bottom" id="b4f-yW-7sE"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="Sib-dm-ftT" secondAttribute="leading" id="jGy-XG-lFo"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="7iQ-wt-L0s" secondAttribute="leading" id="lgT-Jm-cwx"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Sib-dm-ftT" secondAttribute="trailing" constant="-8" id="uX7-st-NJQ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="nOX-Tv-X3I" secondAttribute="trailing" constant="-8" id="vwY-df-ntF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Sib-dm-ftT" secondAttribute="trailing" id="uX7-st-NJQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nOX-Tv-X3I" secondAttribute="trailing" id="vwY-df-ntF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
@@ -133,32 +308,41 @@
                                 <rect key="frame" x="0.0" y="18" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="TheBridge Event List" id="y8y-h2-fAl">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="FQk-2Y-ZHy">
-                                            <connections>
-                                                <action selector="backBtnPressed:" destination="SSc-Y2-Z1h" id="Wlv-TN-w80"/>
-                                            </connections>
+                                    <navigationItem title="Event List" id="y8y-h2-fAl">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="45R-dl-D30">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q7z-ch-OUF">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backBtnPressed:" destination="SSc-Y2-Z1h" eventType="touchUpInside" id="bxo-EN-jSn"/>
+                                                </connections>
+                                            </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Yc9-JL-usb" secondAttribute="trailing" id="BoR-HX-Opy"/>
-                            <constraint firstItem="Yc9-JL-usb" firstAttribute="top" secondItem="A5v-b5-Zls" secondAttribute="bottom" constant="52" id="Zeb-lF-ldC"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Yc9-JL-usb" secondAttribute="leading" id="kHb-3E-VpO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yc9-JL-usb" secondAttribute="trailing" constant="-12" id="BoR-HX-Opy"/>
+                            <constraint firstItem="Yc9-JL-usb" firstAttribute="top" secondItem="A5v-b5-Zls" secondAttribute="bottom" constant="46" id="Zeb-lF-ldC"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Yc9-JL-usb" secondAttribute="leading" constant="12" id="kHb-3E-VpO"/>
                             <constraint firstItem="dlS-HN-xYy" firstAttribute="top" secondItem="Yc9-JL-usb" secondAttribute="bottom" id="p00-br-H31"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="eventTableView" destination="Yc9-JL-usb" id="mbS-kf-HT4"/>
                         <outlet property="webView" destination="npp-En-y3D" id="Df6-0Y-T5I"/>
+                        <segue destination="eI9-h4-IZv" kind="show" identifier="eventWebSegue" id="Cgd-MM-16J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJl-hA-cKB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="128"/>
+            <point key="canvasLocation" x="946" y="-357"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WZP-sj-qAe"/>
+    </inferredMetricsTieBreakers>
 </document>
