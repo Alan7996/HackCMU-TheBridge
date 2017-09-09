@@ -14,6 +14,8 @@ class TheBridgeOrgViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var webView: UIWebView!
     @IBOutlet weak var orgTableView: UITableView!
     
+    var row = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +49,8 @@ class TheBridgeOrgViewController: UIViewController, UITableViewDelegate, UITable
 
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+        row = indexPath.row
+        performSegue(withIdentifier: "orgWebSegue", sender: nil)
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
@@ -61,7 +64,7 @@ class TheBridgeOrgViewController: UIViewController, UITableViewDelegate, UITable
         if let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) {
             // Search for nodes by CSS selector
 //            print(html)
-            var n = 0
+//            var n = 0
             let bodyNode = doc.body
             
             if let inputNodes = bodyNode?.xpath("//div") {
@@ -115,9 +118,31 @@ class TheBridgeOrgViewController: UIViewController, UITableViewDelegate, UITable
                     n += 1
                 }
             }*/
+            
+            if let docu = Kanna.HTML(html: doc.innerHTML!, encoding: String.Encoding.utf8) {
+                var bodyNode = docu.body
+                
+                if let inputNodes = bodyNode?.xpath("//a[contains(@href,'/organization/')]/@href") {
+                    for node in inputNodes {
+                        orgArray[1].append(node.content!)
+                    }
+                }
+            }
+
+            
             print(orgArray)
         }
         self.orgTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "orgWebSegue" {
+                let webViewViewController = segue.destination as! WebViewViewController
+                
+                webViewViewController.urlString = "https://thebridge.cmu.edu" + orgArray[1][row]
+            }
+        }
     }
     
     @IBAction func backBtnPressed2(_ sender: Any) {

@@ -13,12 +13,9 @@ import WebKit
 var eventsArray:[[String]] = [[], [], [], [], []]
 var orgArray:[[String]] = [[], []]
 
-class ViewController: UIViewController, UIWebViewDelegate {
+class ViewController: UIViewController {
     @IBOutlet weak var eventsBtn: UIButton!
     @IBOutlet weak var orgBtn: UIButton!
-    @IBOutlet weak var webView1: UIWebView!
-    
-    var urlString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +26,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
         orgBtn.layer.cornerRadius = 5
         orgBtn.layer.borderWidth = 1
         orgBtn.layer.borderColor = UIColor.black.cgColor
-        
-        self.webView1.delegate = self
-        urlString = "https://thebridge.cmu.edu/events"
-//        self.webView1.loadRequest(NSURLRequest(url: NSURL(string: urlString)! as URL) as URLRequest!)
     }
     /*
     func webViewDidFinishLoad(_ webView: UIWebView) {
