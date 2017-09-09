@@ -103,7 +103,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Organization List" id="YZY-k4-PFc">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="SVY-l0-Ma0">
+                                        <barButtonItem key="leftBarButtonItem" id="SVY-l0-Ma0">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DIF-nh-JLR">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -189,7 +189,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Page Viewer" id="H9L-WC-XtD">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="ec2-fX-3Ab">
+                                        <barButtonItem key="leftBarButtonItem" id="ec2-fX-3Ab">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lkL-jt-NNk">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -307,7 +307,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Event List" id="y8y-h2-fAl">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="45R-dl-D30">
+                                        <barButtonItem key="leftBarButtonItem" id="45R-dl-D30">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q7z-ch-OUF">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -344,6 +344,6 @@
         <image name="TheBridgeLogo" width="5415" height="1797"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WZP-sj-qAe"/>
+        <segue reference="Cgd-MM-16J"/>
     </inferredMetricsTieBreakers>
 </document>

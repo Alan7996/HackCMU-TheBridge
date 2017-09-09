@@ -65,7 +65,6 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
     func parseHTML(html: String) -> Void {
         if let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) {
             // Search for nodes by CSS selector
-//            print(html)
             var n = 0
             for event in doc.css("span[style^='color: rgb(73, 73, 73); display: block; font-size: 18px; font-weight: 600; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 90%; position: absolute;']") {
                 // Strip the string of surrounding whitespace
@@ -73,7 +72,6 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
                 
                 if eventNameString != "" {
                     eventsArray[0].append(eventNameString)
-//                    print(eventNameString)
                     
                     n += 1
                 }
@@ -88,7 +86,6 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
                 
                 if eventDateString != "" {
                     eventsArray[1].append(eventDateString)
-//                    print(eventDateString)
                     
                     n += 1
                 }
@@ -106,7 +103,6 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
                         eventPlaceString = "TBA"
                     }
                     eventsArray[2].append(eventPlaceString)
-//                    print(eventPlaceString)
                     
                     n += 1
                 }
@@ -121,7 +117,6 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
                 
                 if eventTypeString != "" {
                     eventsArray[3].append(eventTypeString)
-//                    print(eventTypeString)
                     
                     n += 1
                 }
@@ -131,7 +126,7 @@ class TheBridgeEventViewController: UIViewController, UITableViewDelegate, UITab
             n = 0
             
             if let docu = Kanna.HTML(html: doc.innerHTML!, encoding: String.Encoding.utf8) {
-                var bodyNode = docu.body
+                let bodyNode = docu.body
                 
                 if let inputNodes = bodyNode?.xpath("//a[contains(@href,'/event/1')]/@href") {
                     for node in inputNodes {

@@ -38,7 +38,6 @@ class TheBridgeOrgViewController: UIViewController, UITableViewDelegate, UITable
         let cell = orgTableView.dequeueReusableCell(withIdentifier: "theBridgeOrgTableViewCell", for: indexPath as IndexPath) as! TheBridgeOrgTableViewCell
         
         cell.orgNameLabel.text = orgArray[0][indexPath.row]
-        //cell.orgInfoLabel.text = orgArray[1][indexPath.row]
         
         cell.layer.borderWidth = 2.0
         cell.layer.borderColor = UIColor.black.cgColor
@@ -63,8 +62,6 @@ class TheBridgeOrgViewController: UIViewController, UITableViewDelegate, UITable
     func parseHTML(html: String) -> Void {
         if let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) {
             // Search for nodes by CSS selector
-//            print(html)
-//            var n = 0
             let bodyNode = doc.body
             
             if let inputNodes = bodyNode?.xpath("//div") {
@@ -84,43 +81,9 @@ class TheBridgeOrgViewController: UIViewController, UITableViewDelegate, UITable
                     }
                 }
             }
-            /*
-            if let inputNodes = bodyNode?.xpath("//p") {
-                for node in inputNodes {
-                    print(node.content!)
-                }
-            }*/
-/*
-            for org in doc.css("div[style^='color: rgb(255, 255, 255); background-color: rgb(188, 188, 188); display: inline-flex; align-items: center; justify-content: center; font-size: 37.5px; border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; height: 75px; width: 75px; position: absolute; top: 9px; left: 13px; margin: 8px; background-size: 55px; -webkit-user-select: none;']") {
-                // Strip the string of surrounding whitespace
-                let orgNameString = org.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                
-                if orgNameString != "" {
-                    orgArray[0].append(orgNameString)
-                    //                    print(orgNameString)
-                    
-                    n += 1
-                }
-            }
-            
-            // Reset counter
-            n = 0
-            */
-            /*for org in doc.css("p[class^='DescriptionExcerpt']") {
-                print(org.text!)
-                // Strip the string of surrounding whitespace
-                let orgInfoString = org.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                
-                if orgInfoString != "" {
-                    orgArray[1].append(orgInfoString)
-                    //                    print(orgInfoString)
-                    
-                    n += 1
-                }
-            }*/
             
             if let docu = Kanna.HTML(html: doc.innerHTML!, encoding: String.Encoding.utf8) {
-                var bodyNode = docu.body
+                let bodyNode = docu.body
                 
                 if let inputNodes = bodyNode?.xpath("//a[contains(@href,'/organization/')]/@href") {
                     for node in inputNodes {
